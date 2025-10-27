@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run ReservationSystem",
+      "request": "launch",
+      "mainClass": "ReservationSystem",
+      "cwd": "${workspaceFolder}",
+      "args": "data/CL34 data/Users",
+      "console": "integratedTerminal"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "java.project.sourcePaths": ["src"],
+  "java.debug.settings.hotCodeReplace": "auto",
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/bin": true,
+    "**/out": true
+  }
+}
