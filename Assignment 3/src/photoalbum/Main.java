@@ -14,7 +14,7 @@ public class Main {
         SwingUtilities.invokeLater(() -> {
             PhotoAlbumModel model = new PhotoAlbumModel();
             PhotoAlbumView view = new PhotoAlbumView();
-            new PhotoAlbumController(model, view); // wires model <-> view
+            new PhotoAlbumController(model, view); // wire controller
             view.setVisible(true);
         });
     }

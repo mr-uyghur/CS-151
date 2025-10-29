@@ -2,6 +2,7 @@ package photoalbum.strategy;
 
 import java.util.List;
 import photoalbum.model.Photo;
+
 /**
  * STRATEGY interface for sorting a photo list.
  * Implementations should return a NEW sorted list, leaving the original intact.

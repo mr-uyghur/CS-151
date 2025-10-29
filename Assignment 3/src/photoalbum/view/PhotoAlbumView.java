@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.List;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -101,18 +102,29 @@ public class PhotoAlbumView extends JFrame {
     /** Returns the currently selected list item text (used by Delete). */
     public String getSelectedName() { return photoList.getSelectedValue(); }
 
-    /** Display the current photo image and its name below the image. */
+    /**
+     * Display the current photo image and its name below the image.
+     * Shows a helpful message if the file can't be read/rendered.
+     */
     public void showCurrentPhoto(Photo p) {
         if (p == null) {
             photoLabel.setText("No photo");
             photoLabel.setIcon(null);
-            return;
+        } else {
+            ImageIcon icon = p.getDisplayIcon(1000, 520); // scaled to fit
+            if (icon == null) {
+                photoLabel.setText("No photo (unsupported or unreadable file)");
+                photoLabel.setIcon(null);
+            } else {
+                photoLabel.setText(p.getName());
+                photoLabel.setIcon(icon);
+                photoLabel.setHorizontalTextPosition(SwingConstants.CENTER);
+                photoLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
+            }
         }
-        photoLabel.setText(p.getName());
-        // fit to a reasonable area in the window
-        photoLabel.setIcon(p.getDisplayIcon(1000, 520));
-        photoLabel.setHorizontalTextPosition(SwingConstants.CENTER);
-        photoLabel.setVerticalTextPosition(SwingConstants.BOTTOM);
+        // Ensure Swing relayouts/redraws immediately
+        photoLabel.revalidate();
+        photoLabel.repaint();
     }
 
     /** Update status text (e.g., current sort + count). */
