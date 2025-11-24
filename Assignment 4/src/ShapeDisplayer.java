@@ -11,6 +11,7 @@
  */
 
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.Icon;
 import javax.swing.JFrame;
@@ -50,8 +51,9 @@ public class ShapeDisplayer {
         drawingPanel.setCurrentFactory(snowFactory);
 
         // ICONS FOR BUTTONS (small shapes)
+        // Center the snowman inside the 60x60 icon (x = 30, y centered)
         Icon snowIcon =
-            new ShapeIcon(new SnowMan(20, 40, 40), 60, 60);
+            new ShapeIcon(new SnowMan(30, 30, 40), 60, 60);
 
         Icon carIcon =
             new ShapeIcon(new CarShape(10, 20, 40), 60, 60);
@@ -78,11 +80,15 @@ public class ShapeDisplayer {
         carButton.addActionListener(e -> drawingPanel.setCurrentFactory(carFactory));
         houseButton.addActionListener(e -> drawingPanel.setCurrentFactory(houseFactory));
 
-        // BUTTON PANEL
+        // BUTTON PANEL (left-aligned)
         JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 10));
         buttonPanel.add(snowButton);
         buttonPanel.add(carButton);
         buttonPanel.add(houseButton);
+        
+        
+        
 
         // LAYOUT
         frame.setLayout(new BorderLayout());

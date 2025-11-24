@@ -6,9 +6,11 @@
  * and let Swing draw the shape at icon-size.
  */
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+
 import javax.swing.Icon;
 
 public class ShapeIcon implements Icon {
@@ -47,6 +49,8 @@ public class ShapeIcon implements Icon {
     public void paintIcon(Component c, Graphics g, int x, int y) {
         Graphics2D g2 = (Graphics2D) g.create();  // safe copy
         g2.translate(x, y);                        // shift to icon position
+        // Ensure the icon's shape is drawn in black
+        g2.setColor(Color.BLACK);
         shape.draw(g2);                            // draw shape
         g2.dispose();                              // cleanup
     }

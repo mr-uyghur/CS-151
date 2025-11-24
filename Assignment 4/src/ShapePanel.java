@@ -69,6 +69,9 @@ public class ShapePanel extends JPanel {
 
         Graphics2D g2 = (Graphics2D) g;
 
+        // Ensure shapes are drawn in black regardless of previous color state
+        g2.setColor(Color.BLACK);
+
         for (CompositeShape s : shapes) {
             s.draw(g2);
         }

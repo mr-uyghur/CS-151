@@ -31,19 +31,16 @@ public class SnowMan implements CompositeShape {
      */
     @Override
     public void draw(Graphics2D g2) {
-        double r = size / 3.0; // radius of each ball
+        double r = size / 3.0; // radius of each ball (kept same scaling)
 
+        // Two circles (bottom and head) stacked so they touch
         Ellipse2D.Double bottom =
             new Ellipse2D.Double(x - r, y, 2 * r, 2 * r);
 
-        Ellipse2D.Double middle =
-            new Ellipse2D.Double(x - r, y - (1.4 * r), 2 * r, 2 * r);
-
         Ellipse2D.Double head =
-            new Ellipse2D.Double(x - r, y - (2.8 * r), 2 * r, 2 * r);
+            new Ellipse2D.Double(x - r, y - (2.0 * r), 2 * r, 2 * r);
 
         g2.draw(bottom);
-        g2.draw(middle);
         g2.draw(head);
     }
 }
